@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pastelería Dulce Tentación - Destacados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        .carousel-item img {
+            height: 480px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #6F4E37;">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index1.0.php">Dulce Tentación</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index1.0.php">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Pagina_Secundaria1.0.php">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="carousel1.0.php">Destacados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contacto1.0.php">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h2 class="text-center fw-bold mb-4">Pasteles y Tortas Destacadas</h2>
+        
+        <div id="demo" class="carousel slide shadow rounded-4 overflow-hidden" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/Torta1.jpg" class="d-block w-100" alt="Torta Chocolate">
+                    <div class="carousel-caption bg-dark bg-opacity-50 p-2 rounded">
+                        <h5>Torta Chocolate</h5>
+                        <h5>$18.990</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/Torta2.jpg" class="d-block w-100" alt="Torta Piña">
+                    <div class="carousel-caption bg-dark bg-opacity-50 p-2 rounded">
+                        <h5>Torta Piña</h5>
+                        <h5>$16.500</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/Torta3.jpg" class="d-block w-100" alt="Pie de Limon">
+                    <div class="carousel-caption bg-dark bg-opacity-50 p-2 rounded">
+                        <h5>Pie de Limon</h5>
+                        <h5>$12.000</h5>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="api1.js"></script>
+    <script src="main1.js"></script>
+</body>
+</html>
