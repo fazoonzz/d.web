@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pastelería Dulce Tentación - Contacto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --cafe-pasteleria: #6F4E37;
+            --fondo-pagina: #F8F9FA;
+            --texto-principal: #2B2B2B;
+        }
+        body {
+            background-color: var(--fondo-pagina);
+            color: var(--texto-principal);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar-custom { background-color: var(--cafe-pasteleria); }
+        .btn-cafe { background-color: var(--cafe-pasteleria); color: #fff; }
+        .btn-cafe:hover { background-color: #563c2a; color: #fff; }
+        .ad-box {
+            border: 2px dashed #bbb;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #777;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-2 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="index1.0.php">Dulce Tentación</a>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index1.0.php">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Pagina_Secundaria1.0.php">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carousel1.0.php">Ofertas</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Contacto1.0.php">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido de Contacto -->
+    <main class="container my-5" style="max-width: 800px;">
+        
+        <!-- Textbox -->
+        <div class="card p-4 border-0 shadow-sm bg-white mb-4">
+            <h4 class="fw-bold mb-3">Deja aquí tu comentario o sugerencia</h4>
+            <form onsubmit="event.preventDefault(); alert('¡Gracias por tus comentarios!');">
+                <div class="mb-3">
+                    <textarea class="form-control" rows="5" placeholder="Escribe tu mensaje, consulta sobre pedidos especiales o tu opinión..." required></textarea>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="fw-semibold">Rating:</span>
+                        <select class="form-select form-select-sm" style="width: auto;">
+                            <option value="5">5/5 ★★★★★</option>
+                            <option value="4">4/5 ★★★★☆</option>
+                            <option value="3">3/5 ★★★☆☆</option>
+                            <option value="2">2/5 ★★☆☆☆</option>
+                            <option value="1">1/5 ★☆☆☆☆</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-cafe px-4">Submit / Enviar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Contactos-->
+        <div class="alert alert-light border shadow-sm text-center py-3 mb-4 fw-semibold">
+            <i class="bi bi-envelope-at-fill text-primary"></i> Contacto: <a href="mail@gmail.com" class="text-decoration-none text-dark">mail@gmail.com</a> | Fono: +56 9 1234 5678
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="api1.js"></script>
+    <script src="main1.js"></script>
+
+</body>
+</html>

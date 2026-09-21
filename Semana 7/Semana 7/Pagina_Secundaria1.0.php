@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pastelería Dulce Tentación - Catálogo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --cafe-pasteleria: #6F4E37;
+            --fondo-pagina: #F8F9FA;
+            --texto-principal: #2B2B2B;
+        }
+        body {
+            background-color: var(--fondo-pagina);
+            color: var(--texto-principal);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar-custom { background-color: var(--cafe-pasteleria); }
+        .btn-cafe { background-color: var(--cafe-pasteleria); color: #fff; }
+        .btn-cafe:hover { background-color: #563c2a; color: #fff; }
+        .ad-box {
+            border: 2px dashed #bbb;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #777;
+            border-radius: 8px;
+        }
+        .card-prod img {
+            height: 180px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-2 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="index1.0.php">Dulce Tentación</a>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index1.0.php">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Pagina_Secundaria1.0.php">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carousel1.0.php">Ofertas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contacto1.0.php">Contacto</a></li>
+                </ul>
+                <div id="contenedorAcceso">
+                    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Acceso
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row g-4">
+            
+            <div class="col-lg-3">
+                <div class="card p-3 border-0 shadow-sm bg-white mb-3">
+                    <h5 class="fw-bold mb-3"><i class="bi bi-list-ul"></i> Categorías</h5>
+                    <div class="list-group list-group-flush">
+                        <button class="list-group-item list-group-item-action active bg-dark border-dark">Todo En Repostería</button>
+                        <button class="list-group-item list-group-item-action">Tortas Tradicionales</button>
+                        <button class="list-group-item list-group-item-action">Pastelería & Porciones</button>
+                        <button class="list-group-item list-group-item-action">Línea Sin Azúcar</button>
+                        <button class="list-group-item list-group-item-action">Postres & Cheesecakes</button>
+                    </div>
+                </div>
+            <div class="ad-box p-4 text-center mb-3">
+                    <div>
+                        <div class="fs-4"><i class="bi bi-tag-fill"></i> AD</div>
+                        <p class="small text-muted m-0"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de Productos y Detalle de Compra -->
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="fw-bold m-0">Productos</h3>
+                    <span class="badge bg-secondary">Entrega a domicilio</span>
+                </div>
+
+                <div class="row g-3">
+                    <!-- Producto 1 -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100 card-prod">
+                            <img src="img/Torta1.jpg" class="card-img-top" alt="Torta Chocolate Con Frutillas">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title fw-bold m-0">Torta Chocolate Con Frutillas</h5>
+                                </div>
+                                <p class="card-text text-muted small my-2">Bizcochuelo bañado en salsa de chocolate con frutillas frescas.</p>
+                                <div class="mt-auto d-flex justify-content-between align-items-center pt-2">
+                                    <span class="fs-5 fw-bold text-dark">$18.990</span>
+                                    <button class="btn btn-cafe btn-sm" onclick="alert('Producto añadido al carrito')">
+                                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 2 -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100 card-prod">
+                            <img src="img/Torta2.jpg" class="card-img-top" alt="Torta Piña">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title fw-bold m-0">Torta Piña</h5>
+                                </div>
+                                <p class="card-text text-muted small my-2">Torta de piña con crema de leche y merengue.</p>
+                                <div class="mt-auto d-flex justify-content-between align-items-center pt-2">
+                                    <span class="fs-5 fw-bold text-dark">$16.500</span>
+                                    <button class="btn btn-cafe btn-sm" onclick="alert('Producto añadido al carrito')">
+                                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 3 -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100 card-prod">
+                            <img src="img/Torta3.jpg" class="card-img-top" alt="Pie de Limón">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title fw-bold m-0">Pie de Limón Artesanal</h5>
+                                </div>
+                                <p class="card-text text-muted small my-2">Masa crocante rellena de crema de limón y merengue.</p>
+                                <div class="mt-auto d-flex justify-content-between align-items-center pt-2">
+                                    <span class="fs-5 fw-bold text-dark">$12.000</span>
+                                    <button class="btn btn-cafe btn-sm" onclick="alert('Producto añadido al carrito')">
+                                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 4 -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100 card-prod">
+                            <img src="img/Torta4.jpg" class="card-img-top" alt="Torta Selva Negra">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title fw-bold m-0">Torta Selva Negra</h5>
+                                </div>
+                                <p class="card-text text-muted small my-2">Bizcocho de cacao embebido en licor suave de cerezas, chantilly y chocolate.</p>
+                                <div class="mt-auto d-flex justify-content-between align-items-center pt-2">
+                                    <span class="fs-5 fw-bold text-dark">$22.990</span>
+                                    <button class="btn btn-cafe btn-sm" onclick="alert('Producto añadido al carrito')">
+                                        <i class="bi bi-cart-plus"></i> Añadir al carrito
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Modal Login -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header navbar-custom text-white">
+                    <h5 class="modal-title fw-bold">Acceso de Clientes</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form onsubmit="iniciarSesion(event)">
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold small">Correo Electrónico:</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pwd" class="form-label fw-semibold small">Contraseña:</label>
+                            <input type="password" class="form-control" id="pwd" required>
+                        </div>
+                        <button type="submit" class="btn btn-cafe w-100 py-2">Ingresar</button>
+                        <div id="loginError" class="text-danger mt-2 text-center small"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="api1.js"></script>
+    <script src="main1.js"></script>
+</body>
+</html>
