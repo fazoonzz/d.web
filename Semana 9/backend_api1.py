@@ -13,7 +13,7 @@ app = FastAPI(
     description="API ubicada y enrutada por API gateway"
 )
 
-#SELINUX 
+
 INTERNAL_GATEWAY_SECRET = os.getenv(
     "INTERNAL_GATEWAY_SECRET"
 )
