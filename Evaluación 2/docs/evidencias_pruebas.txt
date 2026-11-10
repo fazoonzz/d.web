@@ -1,0 +1,79 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: D:\xampp\htdocs\dulce-backend
+collecting ... collected 35 items
+
+tests/test_security_e2e.py::test_catalogo_anonimo_solo_campos_publicos PASSED [  2%]
+tests/test_security_e2e.py::test_sin_sesion_401[GET-/orders] PASSED      [  5%]
+tests/test_security_e2e.py::test_sin_sesion_401[POST-/orders] PASSED     [  8%]
+tests/test_security_e2e.py::test_sin_sesion_401[GET-/clients/me] PASSED  [ 11%]
+tests/test_security_e2e.py::test_sin_sesion_401[POST-/payments] PASSED   [ 14%]
+tests/test_security_e2e.py::test_sin_sesion_401[POST-/graphql] PASSED    [ 17%]
+tests/test_security_e2e.py::test_cliente_no_administra_catalogo PASSED   [ 20%]
+tests/test_security_e2e.py::test_pedido_ajeno_no_visible PASSED          [ 22%]
+tests/test_security_e2e.py::test_servicios_privados_no_publicados[8100] PASSED [ 25%]
+tests/test_security_e2e.py::test_servicios_privados_no_publicados[9001] PASSED [ 28%]
+tests/test_security_e2e.py::test_servicios_privados_no_publicados[9002] PASSED [ 31%]
+tests/test_security_e2e.py::test_servicios_privados_no_publicados[9003] PASSED [ 34%]
+tests/test_security_e2e.py::test_servicios_privados_no_publicados[9004] PASSED [ 37%]
+tests/test_security_e2e.py::test_servicios_privados_no_publicados[8090] PASSED [ 40%]
+tests/test_security_e2e.py::test_servicios_privados_no_publicados[8200] PASSED [ 42%]
+tests/test_security_e2e.py::test_rutas_internas_no_expuestas PASSED      [ 45%]
+tests/test_security_e2e.py::test_cabeceras_de_identidad_del_navegador_se_descartan PASSED [ 48%]
+tests/test_security_e2e.py::test_total_lo_calcula_el_servidor PASSED     [ 51%]
+tests/test_security_e2e.py::test_stock_insuficiente_409_y_cantidad_invalida_422 PASSED [ 54%]
+tests/test_security_e2e.py::test_webhook_sin_firma_o_falsificado_rechazado PASSED [ 57%]
+tests/test_security_e2e.py::test_cliente_no_puede_marcar_pagado_por_otra_via PASSED [ 60%]
+tests/test_security_e2e.py::test_pago_completo_idempotente_y_monto_alterado PASSED [ 62%]
+tests/test_security_e2e.py::test_pago_de_pedido_ajeno_denegado PASSED    [ 65%]
+tests/test_security_e2e.py::test_cancelar_devuelve_stock PASSED          [ 68%]
+tests/test_security_e2e.py::test_graphql_agrega_orders_e_inventory PASSED [ 71%]
+tests/test_security_e2e.py::test_graphql_pedido_ajeno_es_null PASSED     [ 74%]
+tests/test_security_e2e.py::test_graphql_campo_cliente_solo_admin PASSED [ 77%]
+tests/test_security_e2e.py::test_graphql_limites_y_mutaciones PASSED     [ 80%]
+tests/test_security_e2e.py::test_login_invalido_no_distingue_usuario_ni_clave PASSED [ 82%]
+tests/test_security_e2e.py::test_token_no_se_entrega_al_javascript_y_cookie_httponly PASSED [ 85%]
+tests/test_security_e2e.py::test_logout_invalida_sesion PASSED           [ 88%]
+tests/test_security_e2e.py::test_registro_valida_clave_corta_y_correo_duplicado PASSED [ 91%]
+tests/test_security_e2e.py::test_perfil_cliente_y_datos_minimos PASSED   [ 94%]
+tests/test_security_e2e.py::test_admin_ciclo_de_vida_del_pedido PASSED   [ 97%]
+tests/test_security_e2e.py::test_baja_logica_de_producto PASSED          [100%]
+
+============================== slowest durations ==============================
+4.48s call     tests/test_security_e2e.py::test_admin_ciclo_de_vida_del_pedido
+4.04s call     tests/test_security_e2e.py::test_servicios_privados_no_publicados[9004]
+4.03s call     tests/test_security_e2e.py::test_servicios_privados_no_publicados[9003]
+4.03s call     tests/test_security_e2e.py::test_servicios_privados_no_publicados[9001]
+4.02s call     tests/test_security_e2e.py::test_servicios_privados_no_publicados[8090]
+4.02s call     tests/test_security_e2e.py::test_servicios_privados_no_publicados[8100]
+4.02s call     tests/test_security_e2e.py::test_servicios_privados_no_publicados[9002]
+4.01s call     tests/test_security_e2e.py::test_servicios_privados_no_publicados[8200]
+2.22s call     tests/test_security_e2e.py::test_pago_completo_idempotente_y_monto_alterado
+1.62s setup    tests/test_security_e2e.py::test_pedido_ajeno_no_visible
+1.28s call     tests/test_security_e2e.py::test_cancelar_devuelve_stock
+1.12s call     tests/test_security_e2e.py::test_graphql_agrega_orders_e_inventory
+1.06s call     tests/test_security_e2e.py::test_pedido_ajeno_no_visible
+1.01s setup    tests/test_security_e2e.py::test_cliente_no_administra_catalogo
+0.92s call     tests/test_security_e2e.py::test_baja_logica_de_producto
+0.79s call     tests/test_security_e2e.py::test_stock_insuficiente_409_y_cantidad_invalida_422
+0.76s call     tests/test_security_e2e.py::test_pago_de_pedido_ajeno_denegado
+0.74s call     tests/test_security_e2e.py::test_graphql_pedido_ajeno_es_null
+0.69s call     tests/test_security_e2e.py::test_logout_invalida_sesion
+0.68s call     tests/test_security_e2e.py::test_registro_valida_clave_corta_y_correo_duplicado
+0.66s call     tests/test_security_e2e.py::test_cliente_no_puede_marcar_pagado_por_otra_via
+0.61s call     tests/test_security_e2e.py::test_graphql_campo_cliente_solo_admin
+0.57s call     tests/test_security_e2e.py::test_total_lo_calcula_el_servidor
+0.52s call     tests/test_security_e2e.py::test_perfil_cliente_y_datos_minimos
+0.33s call     tests/test_security_e2e.py::test_token_no_se_entrega_al_javascript_y_cookie_httponly
+0.26s call     tests/test_security_e2e.py::test_graphql_limites_y_mutaciones
+0.12s call     tests/test_security_e2e.py::test_login_invalido_no_distingue_usuario_ni_clave
+0.11s call     tests/test_security_e2e.py::test_catalogo_anonimo_solo_campos_publicos
+0.11s call     tests/test_security_e2e.py::test_cliente_no_administra_catalogo
+0.08s call     tests/test_security_e2e.py::test_webhook_sin_firma_o_falsificado_rechazado
+0.05s call     tests/test_security_e2e.py::test_cabeceras_de_identidad_del_navegador_se_descartan
+0.03s call     tests/test_security_e2e.py::test_rutas_internas_no_expuestas
+0.01s call     tests/test_security_e2e.py::test_sin_sesion_401[GET-/orders]
+
+(72 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================= 35 passed in 49.31s =============================
