@@ -1,0 +1,119 @@
+
+x-python: &python
+  build: { context: ., dockerfile: Dockerfile.python }
+  restart: unless-stopped
+  networks: [private]
+  depends_on:
+    vault-init: { condition: service_completed_successfully }
+
+services:
+  vault:
+    image: hashicorp/vault:1.17
+    command: ["server", "-dev", "-dev-listen-address=0.0.0.0:8200"]
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_ROOT_TOKEN}
+    cap_add: [IPC_LOCK]
+    networks: [private]
+
+  vault-init:
+    image: python:3.12-slim
+    volumes: ["./scripts/init_vault.py:/init_vault.py:ro"]
+    command: ["python", "/init_vault.py"]
+    environment:
+      VAULT_ADDR: http://vault:8200
+      VAULT_ROOT_TOKEN: ${VAULT_ROOT_TOKEN}
+      PAYMENTS_WEBHOOK_SECRET: ${PAYMENTS_WEBHOOK_SECRET}
+      VAULT_TOKEN_GATEWAY: ${VAULT_TOKEN_GATEWAY}
+      VAULT_TOKEN_AUTH: ${VAULT_TOKEN_AUTH}
+      VAULT_TOKEN_CLIENTS: ${VAULT_TOKEN_CLIENTS}
+      VAULT_TOKEN_INVENTORY: ${VAULT_TOKEN_INVENTORY}
+      VAULT_TOKEN_ORDERS: ${VAULT_TOKEN_ORDERS}
+      VAULT_TOKEN_PAYMENTS: ${VAULT_TOKEN_PAYMENTS}
+      VAULT_TOKEN_GRAPHQL: ${VAULT_TOKEN_GRAPHQL}
+    networks: [private]
+    depends_on: [vault]
+    restart: "no"
+
+  auth:
+    <<: *python
+    command: uvicorn services.auth.main:app --host 0.0.0.0 --port 8100
+    environment:
+      VAULT_ADDR: http://vault:8200
+      VAULT_TOKEN: ${VAULT_TOKEN_AUTH}
+      AUTH_DB: /data/auth.db
+      CLIENTS_URL: http://clients:9001
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD}
+      SEED_CLIENT_EMAIL: ${SEED_CLIENT_EMAIL}
+      SEED_CLIENT_PASSWORD: ${SEED_CLIENT_PASSWORD}
+    volumes: ["auth-data:/data"]
+
+  clients:
+    <<: *python
+    command: uvicorn services.clients.main:app --host 0.0.0.0 --port 9001
+    environment: { VAULT_ADDR: "http://vault:8200", VAULT_TOKEN: "${VAULT_TOKEN_CLIENTS}", CLIENTS_DB: /data/clients.db }
+    volumes: ["clients-data:/data"]
+
+  inventory:
+    <<: *python
+    command: uvicorn services.inventory.main:app --host 0.0.0.0 --port 9002
+    environment: { VAULT_ADDR: "http://vault:8200", VAULT_TOKEN: "${VAULT_TOKEN_INVENTORY}", INVENTORY_DB: /data/inventory.db }
+    volumes: ["inventory-data:/data"]
+
+  orders:
+    <<: *python
+    command: uvicorn services.orders.main:app --host 0.0.0.0 --port 9003
+    environment:
+      VAULT_ADDR: http://vault:8200
+      VAULT_TOKEN: ${VAULT_TOKEN_ORDERS}
+      ORDERS_DB: /data/orders.db
+      INVENTORY_URL: http://inventory:9002
+    volumes: ["orders-data:/data"]
+
+  payments:
+    <<: *python
+    command: uvicorn services.payments.main:app --host 0.0.0.0 --port 9004
+    environment:
+      VAULT_ADDR: http://vault:8200
+      VAULT_TOKEN: ${VAULT_TOKEN_PAYMENTS}
+      PAYMENTS_DB: /data/payments.db
+      ORDERS_URL: http://orders:9003
+      PAYMENT_SANDBOX: ${PAYMENT_SANDBOX:-false}
+    volumes: ["payments-data:/data"]
+
+  graphql:
+    build: { context: ./graphql }
+    restart: unless-stopped
+    networks: [private]
+    depends_on:
+      vault-init: { condition: service_completed_successfully }
+    environment:
+      VAULT_ADDR: http://vault:8200
+      VAULT_TOKEN: ${VAULT_TOKEN_GRAPHQL}
+      ORDERS_URL: http://orders:9003
+      INVENTORY_URL: http://inventory:9002
+      CLIENTS_URL: http://clients:9001
+
+  gateway:
+    <<: *python
+    command: uvicorn gateway.main:app --host 0.0.0.0 --port 8000
+    networks: [public, private]
+    ports: ["8000:8000"]
+    environment:
+      VAULT_ADDR: http://vault:8200
+      VAULT_TOKEN: ${VAULT_TOKEN_GATEWAY}
+      AUTH_URL: http://auth:8100
+      CLIENTS_URL: http://clients:9001
+      INVENTORY_URL: http://inventory:9002
+      ORDERS_URL: http://orders:9003
+      PAYMENTS_URL: http://payments:9004
+      GRAPHQL_URL: http://graphql:8090
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+
+
+networks:
+  public: {}
+  private: { internal: true }
+
+volumes: { auth-data: {}, clients-data: {}, inventory-data: {}, orders-data: {}, payments-data: {} }

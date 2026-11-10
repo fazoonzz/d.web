@@ -1,0 +1,17 @@
+{
+  "name": "dulce-graphql-gateway",
+  "version": "1.0.0",
+  "description": "GraphQL Gateway privado: agrega orders + inventory + clients",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "express": "^5.2.1",
+    "graphql": "15.10.1"
+  }
+}
